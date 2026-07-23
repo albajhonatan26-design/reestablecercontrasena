@@ -17,7 +17,7 @@ class UsersController extends Controller
     // 1. Muestra el formulario para pedir el correo
     public function showLinkRequestForm()
     {
-        return view('auth.forgot-password');
+        return view('password.request');
     }
 
     // 2. Procesa el envío del correo con el token
@@ -34,7 +34,7 @@ class UsersController extends Controller
     }
 
     // 3. Muestra el formulario donde el usuario pone la nueva clave
-    public function showResetForm(Request $request, $token)
+    public function showResetForm(Request $request, $string, $token)
     {
         return view('auth.reset-password', ['token' => $token, 'email' => $request->email]);
     }

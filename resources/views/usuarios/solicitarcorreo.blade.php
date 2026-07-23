@@ -1,31 +1,32 @@
 @extends('layouts.app')
 
 @section('contenido')
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Recuperar Contraseña</title>
-</head>
-<body>
+<div class="container mt-4">
     <h2>Recuperar Contraseña</h2>
 
+    {{-- Mensaje de éxito --}}
     @if (session('status'))
-        <p style="color: green;">{{ session('status') }}</p>
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
     @endif
 
+    {{-- Errores de validación --}}
     @error('email')
-        <p style="color: red;">{{ $message }}</p>
+        <div class="alert alert-danger">
+            {{ $message }}
+        </div>
     @enderror
 
     <form method="POST" action="{{ route('password.email') }}">
         @csrf
-        <div>
-            <label for="email">Correo electrónico:</label>
-            <input type="email" name="email" id="email" value="{{ old('email') }}" required autofocus>
+        
+        <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico:</label>
+            <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" required autofocus>
         </div>
-        <button type="submit">Enviar enlace de recuperación</button>
+
+        <button type="submit" class="btn btn-primary">Enviar enlace de recuperación</button>
     </form>
-</body>
-</html>
+</div>
 @endsection

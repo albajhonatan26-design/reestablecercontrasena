@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DepartamentosController;
+use App\Http\Controllers\UsersController;
 
 Route::get('/', function () {
     return view('index');
@@ -36,7 +37,7 @@ Route::get('/listardepartamentos', [DepartamentosController::class, 'index'])
     ->name('departamentos.destroy');
 
 
-use App\Http\Controllers\UsersController;
+
 
 // 1. Mostrar formulario para ingresar el correo
 Route::get('/forgot-password', [UsersController::class, 'showLinkRequestForm'])
