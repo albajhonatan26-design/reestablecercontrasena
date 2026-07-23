@@ -34,3 +34,26 @@ Route::get('/listardepartamentos', [DepartamentosController::class, 'index'])
 
     Route::delete('/eliminardepartamentos/{id}', [DepartamentosController::class, 'destroy'])
     ->name('departamentos.destroy');
+
+
+use App\Http\Controllers\UsersController;
+
+// 1. Mostrar formulario para ingresar el correo
+Route::get('/forgot-password', [UsersController::class, 'showLinkRequestForm'])
+    ->middleware('guest')
+    ->name('password.request');
+
+// 2. Procesar el envío del correo con el token
+Route::post('/forgot-password', [UsersController::class, 'sendResetLinkEmail'])
+    ->middleware('guest')
+    ->name('password.email');
+
+// 3. Mostrar formulario para ingresar la nueva contraseña (desde el enlace del correo)
+Route::get('/reset-password/{token}', [UsersController::class, 'showResetForm'])
+    ->middleware('guest')
+    ->name('password.reset');
+
+// 4. Guardar la nueva contraseña
+Route::post('/reset-password', [UsersController::class, 'reset'])
+    ->middleware('guest')
+    ->name('password.update');
