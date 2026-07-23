@@ -20,13 +20,12 @@
 
     <form method="POST" action="{{ route('password.email') }}">
         @csrf
-        
         <div class="mb-3">
             <label for="email" class="form-label">Correo electrónico:</label>
             <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" required autofocus>
         </div>
 
-        <button type="submit" class="btn btn-primary">Enviar enlace de recuperación</button>
+        <button type="submit" class="btn btn-primary" >Enviar enlace de recuperación</button>
     </form>
 </div>
 @endsection

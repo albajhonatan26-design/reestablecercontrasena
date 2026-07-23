@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DepartamentosController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Empleados; 
 
 Route::get('/', function () {
     return view('index');
@@ -40,7 +41,7 @@ Route::get('/listardepartamentos', [DepartamentosController::class, 'index'])
 
 
 // 1. Mostrar formulario para ingresar el correo
-Route::get('/forgot-password', [UsersController::class, 'showLinkRequestForm'])
+Route::get('solicitarcorreo', [UsersController::class, 'showLinkRequestForm'])
     ->middleware('guest')
     ->name('password.request');
 
@@ -50,7 +51,7 @@ Route::post('/forgot-password', [UsersController::class, 'sendResetLinkEmail'])
     ->name('password.email');
 
 // 3. Mostrar formulario para ingresar la nueva contraseña (desde el enlace del correo)
-Route::get('/reset-password/{token}', [UsersController::class, 'showResetForm'])
+Route::get('cambiarcontraseña/{token}', [UsersController::class, 'showResetForm'])
     ->middleware('guest')
     ->name('password.reset');
 
@@ -58,3 +59,8 @@ Route::get('/reset-password/{token}', [UsersController::class, 'showResetForm'])
 Route::post('/reset-password', [UsersController::class, 'reset'])
     ->middleware('guest')
     ->name('password.update');
+
+
+
+
+   

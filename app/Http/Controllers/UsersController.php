@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -17,7 +16,7 @@ class UsersController extends Controller
     // 1. Muestra el formulario para pedir el correo
     public function showLinkRequestForm()
     {
-        return view('password.request');
+        return view('usuarios.solicitarcorreo');
     }
 
     // 2. Procesa el envío del correo con el token
@@ -34,10 +33,14 @@ class UsersController extends Controller
     }
 
     // 3. Muestra el formulario donde el usuario pone la nueva clave
-    public function showResetForm(Request $request, $string, $token)
-    {
-        return view('auth.reset-password', ['token' => $token, 'email' => $request->email]);
-    }
+
+public function showResetForm(Request $request, string $token)
+{
+    return view('usuarios.cambiarcontraseña', [
+        'token' => $token,
+        'email' => $request->email
+    ]);
+}
 
     // 4. Valida el token y actualiza la contraseña
     public function reset(Request $request)
