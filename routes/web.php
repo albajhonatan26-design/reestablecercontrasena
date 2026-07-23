@@ -40,9 +40,9 @@ Route::get('/listardepartamentos', [DepartamentosController::class, 'index'])
 
 
 // 1. Mostrar formulario para ingresar el correo
-Route::get('/forgot-password', [UsersController::class, 'showLinkRequestForm'])
+Route::get('/solicitar-correo', [UsersController::class, 'showLinkRequestForm'])
     ->middleware('guest')
-    ->name('password.request');
+    ->name('usuarios.solicitarcorreo');
 
 // 2. Procesar el envío del correo con el token
 Route::post('/forgot-password', [UsersController::class, 'sendResetLinkEmail'])

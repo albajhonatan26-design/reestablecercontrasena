@@ -5,7 +5,7 @@
 
 
             <li><a href="{{ route('departamentos.index') }}">Departamentos</a></li>
-            <li>href="{{route('password.request')}}"</li>
+            <li> <a href="{{ route('usuarios.solicitarcorreo')}}"></a></li>
             <li><a href="contactenos">Contáctenos</a></li>
             <li><a href="certificaciones">Certificaciones</a></li>
             <li><a href="sedes">Sedes</a></li>

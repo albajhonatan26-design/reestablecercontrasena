@@ -17,7 +17,7 @@ class UsersController extends Controller
     // 1. Muestra el formulario para pedir el correo
     public function showLinkRequestForm()
     {
-        return view('password.request');
+        return view('usuarios.solicitarcorreo');
     }
 
     // 2. Procesa el envío del correo con el token
